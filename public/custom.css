@@ -1,0 +1,40 @@
+html,
+body {
+  font-family: "Nunito", sans-serif;
+  background: #eaeef3;
+  color: #000000de;
+  margin: 0;
+  padding: 0;
+  width: 100%;
+}
+
+#main {
+  margin: 1rem auto;
+  width: 100%;
+}
+
+#todoList {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  grid-gap: 10px;
+  grid-auto-rows: minmax(100px, auto);
+  margin-top: 5%;
+}
+
+#todoItem {
+  width: 100%;
+}
+
+#newTask {
+  width: 100%;
+}
+
+#btnGroup {
+  position: relative;
+  left: 9rem;
+}
+
+#outlined-required,
+#outlined {
+  background: whitesmoke;
+}
