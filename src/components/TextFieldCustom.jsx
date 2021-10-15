@@ -1,14 +1,14 @@
 import React from "react";
 import TextField from "@mui/material/TextField";
 
-export function TextFieldCustom({ req, placeholder, inputRef }) {
+export function TextFieldCustom({ req, placeholder, inputRef, label }) {
   switch (req) {
     case true:
       return (
         <TextField
           required
           id="outlined-required"
-          label="Nueva Tarea"
+          label={label}
           placeholder={placeholder}
           margin="normal"
           color="primary"
@@ -20,6 +20,7 @@ export function TextFieldCustom({ req, placeholder, inputRef }) {
       return (
         <TextField
           id="outlined"
+          label={label}
           placeholder={placeholder}
           margin="normal"
           color="primary"

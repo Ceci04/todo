@@ -3,8 +3,7 @@ import { v4 as uuid } from "uuid";
 import { TodoList } from "./components/TodoList";
 import { IconButtonCustom } from "./components/IconButtonCustom";
 import { TextFieldCustom } from "./components/TextFieldCustom";
-import Container from "@mui/material/Container";
-import Typography from "@mui/material/Typography";
+import { Avatar, Grid, Typography, Container } from "@mui/material";
 
 // Abreviaturas
 //LS - LocalStorage
@@ -34,6 +33,7 @@ export function App() {
   const handleTodoAdd = () => {
     // Almacenamos el value del input.
     const task = todoTaskRef.current.value;
+
     // Si el texto esta vacio salimos con el return.
     if (task === "") return;
 
@@ -64,10 +64,10 @@ export function App() {
     // Buscamos la tarea por el ID.
     const todo = newTodos.find((todo) => todo.id === id);
     const index = newTodos.indexOf(todo);
-    
-     if(index > -1){
-         newTodos.splice(index, 1);
-     }
+
+    if (index > -1) {
+      newTodos.splice(index, 1);
+    }
     // Le colocamos el estado de forma inversa.
     setTodos(newTodos);
   };
@@ -82,10 +82,17 @@ export function App() {
   return (
     <Fragment>
       <Container>
-        <Typography variant="h1" sx={{ fontSize: 26 }} textAlign="center">
-          TODO List
-        </Typography>
-        <Typography variant="h2" sx={{ fontSize: 16 }} textAlign="center">
+        <Grid container>
+          <Grid item xs="auto">
+            <Avatar src="../todo-icon.png"></Avatar>
+          </Grid>
+          <Grid item xs>
+            <Typography variant="h1" sx={{ fontSize: 28, padding: 0.5 }}>
+              TODO List
+            </Typography>
+          </Grid>
+        </Grid>
+        <Typography variant="h2" sx={{ fontSize: 18 }} textAlign="center">
           Te quedan {todos.filter((todo) => !todo.completed).length} tareas por
           terminar!
         </Typography>
@@ -94,6 +101,7 @@ export function App() {
             req={true}
             placeholder={""}
             inputRef={todoTaskRef}
+            label="Nueva Tarea"
           ></TextFieldCustom>
           {/* IconButton */}
           <div id="btnGroup">
@@ -109,7 +117,11 @@ export function App() {
             ></IconButtonCustom>
           </div>
         </div>
-        <TodoList todos={todos} toggleTodo={toggleTodo} deleteTodo={deleteTodo}/>
+        <TodoList
+          todos={todos}
+          toggleTodo={toggleTodo}
+          deleteTodo={deleteTodo}
+        />
       </Container>
     </Fragment>
   );
